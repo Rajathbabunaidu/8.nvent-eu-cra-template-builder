@@ -1,0 +1,12 @@
+{
+  "name": "nvent-eu-cra-template-builder",
+  "version": "1.0.0",
+  "private": true,
+  "description": "nVent EU CRA Hub Page 2 Template Builder — single WeWeb Vue 3 coded element",
+  "scripts": {
+    "serve": "weweb serve",
+    "build": "weweb build --name=eu-cra-template-builder --type=element",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "devDependencies": { "@weweb/cli": "^3.8.16" }
+}

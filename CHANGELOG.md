@@ -1,11 +1,15 @@
 # Changelog
 
-## 1.0.0 — 2026-11-15
+## v1.1.0 — 16 November 2026 (source release candidate)
 
-- First GitHub-importable WeWeb Vue 3 coded element for Page 2: Template Builder.
-- One integrated parent component with five internal tabs and shared state.
-- Template/draft setup, domain + contributor + tool + question + option editing, new domain-shared stage/team editor, conditional and risk/issue rules, validation/publication gates.
-- Supabase Project URL / `sb_publishable_` key supplied via WeWeb properties or temporary on-page connection dialog.
-- Global local-only preview with contributor and reviewer simulation.
-- Guarded against publishing incomplete domain-shared stage snapshots until backend integration is complete.
-- Lightweight Node adapter/logic tests. No live WeWeb build or Supabase integration run in packaging environment.
+- Draft deletion buttons for Domain, Contributor, Tool Instance and Review Stage with explicit confirmation and a new transactional deletion RPC script.
+- Inline, question-type-aware answer option editor; automatic YES_NO options for newly created questions.
+- Conditional operator selection and real option-ID mapping through `cra_tm_set_condition_answer_options`.
+- Corrected Preview SHOW semantics, added mapped-option evaluation and state reset on contributor switching.
+- Expanded Node tests for preview logic, option handling and deletion source contracts.
+- Preserved the existing layout/ordering, published-stage publication blocker and historical record protection.
+- **Known limitation:** audited tool instances cannot be physically deleted under current history FK; see `docs/UPGRADE_AND_TEST_v1.1.0.md`.
+
+## v1.0.0
+
+Original five-tab Template Builder baseline.

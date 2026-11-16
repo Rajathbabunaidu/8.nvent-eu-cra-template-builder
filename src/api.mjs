@@ -9,7 +9,7 @@ export const T = Object.freeze({
   tools:'cra_tm_tools',releases:'cra_tm_tool_releases',instances:'cra_tm_tool_instances',
   sections:'cra_tm_tool_sections',questions:'cra_tm_tool_questions',options:'cra_tm_tool_answer_options',
   questionTypes:'cra_tm_question_types',conditional:'cra_tm_conditional_rules',
-  conditions:'cra_tm_conditional_rule_conditions',risk:'cra_tm_risk_issue_rules',
+  conditions:'cra_tm_conditional_rule_conditions',conditionOptions:'cra_tm_condition_answer_options',risk:'cra_tm_risk_issue_rules',
   stages:'cra_tm_domain_review_stages',stageTeams:'cra_tm_domain_review_stage_teams',
   validationRuns:'cra_tm_validation_runs',validationResults:'cra_tm_template_validation_results',
 });
@@ -102,6 +102,7 @@ export function createApi({url,key,fetchFn=fetch}) {
       childRows(T.contributors,'domain_id',idList(domains)),childRows(T.stages,'domain_id',idList(domains)),
       childRows(T.conditions,'conditional_rule_id',idList(conditional))
     ]);
+    const conditionOptions=await childRows(T.conditionOptions,'condition_id',idList(conditions));
     const [instances,stageTeams]=await Promise.all([
       childRows(T.instances,'contributor_assessment_id',idList(contributors)),
       childRows(T.stageTeams,'domain_review_stage_id',idList(stages))
@@ -112,7 +113,7 @@ export function createApi({url,key,fetchFn=fetch}) {
     ]);
     const questions=await childRows(T.questions,'tool_section_id',idList(sections));
     const options=await childRows(T.options,'question_id',idList(questions));
-    return {domains,contributors,instances,sections,questions,options,conditional,conditions,risk,stages,stageTeams};
+    return {domains,contributors,instances,sections,questions,options,conditional,conditions,conditionOptions,risk,stages,stageTeams};
   }
   return {request,rows,byIds,childRows,rpc,insert,patch,remove,get,catalogue,graph};
 }

@@ -1,6 +1,8 @@
+> **v1.1.0:** See [upgrade and test guidance](docs/UPGRADE_AND_TEST_v1.1.0.md) for deletion SQL, new inline answer authoring, important backend retention restrictions and the unchanged publication blocker.
+
 # nVent EU CRA Hub — Page 2: Template Builder
 
-**Version 1.0.0 · WeWeb Vue 3 coded element · Supabase PostgreSQL**  
+**Version 1.1.0 (source candidate; see docs/UPGRADE_AND_TEST_v1.1.0.md) · WeWeb Vue 3 coded element · Supabase PostgreSQL**  
 **Delivery:** One WeWeb page / one parent `src/wwElement.vue` component with five internal tabs. This repository is **not** five separate WeWeb pages.
 
 ## 1. What is included

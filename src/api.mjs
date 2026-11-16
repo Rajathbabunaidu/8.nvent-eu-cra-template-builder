@@ -2,6 +2,8 @@
  * Contract based on uploaded 2026-11-15 schema and 3A–3H additive migrations.
  * No browser persistence, privileged keys, Supabase Auth impersonation, or RLS bypass.
  */
+import {activeGraph} from './lifecycle.mjs';
+
 export const T = Object.freeze({
   templates:'cra_tm_templates',versions:'cra_tm_template_versions',versionStatuses:'cra_tm_version_statuses',
   templateStatuses:'cra_tm_template_statuses',teams:'teams',users:'user_profiles',
@@ -108,12 +110,12 @@ export function createApi({url,key,fetchFn=fetch}) {
       childRows(T.stageTeams,'domain_review_stage_id',idList(stages))
     ]);
     const [sections,risk]=await Promise.all([
-      childRows(T.sections,'tool_instance_id',idList(instances)),
-      childRows(T.risk,'tool_instance_id',idList(instances))
+      childRows(T.sections,'tool_instance_id',idList(instances.filter(x=>x.removed_at == null))),
+      childRows(T.risk,'tool_instance_id',idList(instances.filter(x=>x.removed_at == null)))
     ]);
     const questions=await childRows(T.questions,'tool_section_id',idList(sections));
     const options=await childRows(T.options,'question_id',idList(questions));
-    return {domains,contributors,instances,sections,questions,options,conditional,conditions,conditionOptions,risk,stages,stageTeams};
+    return activeGraph({domains,contributors,instances,sections,questions,options,conditional,conditions,conditionOptions,risk,stages,stageTeams});
   }
   return {request,rows,byIds,childRows,rpc,insert,patch,remove,get,catalogue,graph};
 }

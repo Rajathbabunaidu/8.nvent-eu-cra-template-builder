@@ -1,8 +1,10 @@
+> **v1.1.1:** For soft removal, restoration, audit retention and fail-closed publication safeguards, see [v1.1.1 upgrade guidance](docs/UPGRADE_AND_TEST_v1.1.1.md). Older v1.1.0 notes: [here](docs/UPGRADE_AND_TEST_v1.1.0.md).
+
 > **v1.1.0:** See [upgrade and test guidance](docs/UPGRADE_AND_TEST_v1.1.0.md) for deletion SQL, new inline answer authoring, important backend retention restrictions and the unchanged publication blocker.
 
 # nVent EU CRA Hub — Page 2: Template Builder
 
-**Version 1.1.0 (source candidate; see docs/UPGRADE_AND_TEST_v1.1.0.md) · WeWeb Vue 3 coded element · Supabase PostgreSQL**  
+**Version 1.1.1 (source candidate; see docs/UPGRADE_AND_TEST_v1.1.1.md) · WeWeb Vue 3 coded element · Supabase PostgreSQL**  
 **Delivery:** One WeWeb page / one parent `src/wwElement.vue` component with five internal tabs. This repository is **not** five separate WeWeb pages.
 
 ## 1. What is included
@@ -21,12 +23,13 @@
 
 ```text
 nvent-eu-cra-template-builder/
-├── package.json         # WeWeb CLI scripts, version 1.0.0
+├── package.json         # WeWeb CLI scripts, version 1.1.1
 ├── ww-config.js         # Properties shown in WeWeb settings
 ├── src/
 │   ├── wwElement.vue    # The single Vue 3 parent component, all five tabs
 │   ├── api.mjs          # Pure Supabase PostgREST/RPC adapter
-│   └── logic.mjs        # Client-only local preview logic
+│   ├── logic.mjs        # Client-only local preview logic
+│   └── lifecycle.mjs    # Active-draft projection, remove/restore UI support
 ├── tests/
 │   └── api.test.mjs     # Lightweight API/preview static checks
 └── docs/

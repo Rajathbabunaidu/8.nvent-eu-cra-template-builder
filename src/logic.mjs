@@ -73,4 +73,4 @@ export function visibilityFor(targetType,targetId,g,answers) {
   hidden=(showPresent&&!showPassed)||hidePassed;
   return {hidden,required,disabled,unknown};
 }
-export function emptyGraph(){return {domains:[],contributors:[],instances:[],sections:[],questions:[],options:[],conditional:[],conditions:[],conditionOptions:[],risk:[],stages:[],stageTeams:[]};}
+export function emptyGraph(){return {domains:[],contributors:[],instances:[],sections:[],questions:[],options:[],conditional:[],conditions:[],conditionOptions:[],risk:[],stages:[],stageTeams:[],removedCounts:{domains:0,contributors:0,instances:0,stages:0},hiddenLinkedRules:0,removedItems:[]};}
